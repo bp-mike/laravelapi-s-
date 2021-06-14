@@ -12,7 +12,11 @@ class Post extends Model
     protected $fillable = [
         'title',
         'slug',
-        'like',
+        'likes',
         'content'
-    ]
+    ];
+
+    // protected $casts = [
+    //     'likes' => 'integer'
+    // ];
 }

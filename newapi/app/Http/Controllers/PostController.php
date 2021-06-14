@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Models\Post;
 
-class PostContoller extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,18 @@ class PostContoller extends Controller
      */
     public function index()
     {
-        //
         return Post::all();
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -26,7 +35,9 @@ class PostContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required'
+        ]);
         return Post::create($request->all());
     }
 
@@ -38,9 +49,19 @@ class PostContoller extends Controller
      */
     public function show($id)
     {
-        //
         return Post::find($id);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -51,7 +72,6 @@ class PostContoller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $post = Post::find($id);
         $post->update($request->all());
         return $post;
@@ -65,7 +85,6 @@ class PostContoller extends Controller
      */
     public function destroy($id)
     {
-        //
         return Post::destroy($id);
     }
 }
