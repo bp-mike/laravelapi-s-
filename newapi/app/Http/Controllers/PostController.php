@@ -38,6 +38,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required'
         ]);
+        
         return Post::create($request->all());
     }
 
